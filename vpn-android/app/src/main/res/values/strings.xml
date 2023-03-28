@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">EasyVpn</string>
+    <string name="title_home">主页</string>
+    <string name="title_dashboard">仪表板</string>
+    <string name="title_options">选项</string>
+    <string name="start_run">启动</string>
+    <string name="stop_run">停止</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="back">返回</string>
+    <string name="result">操作结果</string>
+    <string name="options">选项</string>
+    <string name="save_success">保存成功</string>
+    <string name="click_again_exit">再点击一下，退出应用</string>
+    <string name="ip">ip</string>
+    <string name="port">port</string>
+    <string name="apply">应用</string>
+    <string name="apply_success">应用成功！</string>
+    <string name="dns1">DNS1</string>
+    <string name="dns2">DNS2</string>
+
+</resources>

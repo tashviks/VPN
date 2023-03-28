@@ -1,0 +1,128 @@
+package com.easyvpn.main;
+// Contributed by Tashvik and Pawan
+public class IPHeader {
+
+	public static final short IP = 0x0800;
+	public static final byte ICMP = 1;
+	public static final byte TCP = 6;  
+	public static final byte UDP = 17; 
+	public static final byte offset_proto = 9; 
+	public static final int offset_src_ip = 12; 
+	public static final int offset_dest_ip = 16;
+	static final byte offset_ver_ihl = 0; 
+	static final byte offset_tos = 1; 	
+	static final short offset_tlen = 2; 
+	static final short offset_identification = 4; 
+	static final short offset_flags_fo = 6; 
+	static final byte offset_ttl = 8; 
+	static final short offset_crc = 10;
+	static final int offset_op_pad = 20;
+
+	public byte[] mData;
+	public int mOffset;
+
+	public IPHeader(byte[] data, int offset) {
+		mData = data;
+		mOffset = offset;
+	}
+
+	public void Default() {
+		setHeaderLength(20);
+		setTos((byte) 0);
+		setTotalLength(0);
+		setIdentification(0);
+		setFlagsAndOffset((short) 0);
+		setTTL((byte) 64);
+	}
+
+	public int getDataLength() {
+		return this.getTotalLength() - this.getHeaderLength();
+	}
+
+	public int getHeaderLength() {
+		return (mData[mOffset + offset_ver_ihl] & 0x0F) * 4;
+	}
+
+	public void setHeaderLength(int value) {
+		// 4 << 4 表示版本为IPv4
+		mData[mOffset + offset_ver_ihl] = (byte) ((4 << 4) | (value / 4));
+	}
+
+	public byte getTos() {
+		return mData[mOffset + offset_tos];
+	}
+
+	public void setTos(byte value) {
+		mData[mOffset + offset_tos] = value;
+	}
+
+	public int getTotalLength() {
+		return CommonMethods.readShort(mData, mOffset + offset_tlen) & 0xFFFF;
+	}
+
+	public void setTotalLength(int value) {
+		CommonMethods.writeShort(mData, mOffset + offset_tlen, (short) value);
+	}
+
+	public int getIdentification() {
+		return CommonMethods.readShort(mData, mOffset + offset_identification) & 0xFFFF;
+	}
+
+	public void setIdentification(int value) {
+		CommonMethods.writeShort(mData, mOffset + offset_identification, (short) value);
+	}
+
+	public short getFlagsAndOffset() {
+		return CommonMethods.readShort(mData, mOffset + offset_flags_fo);
+	}
+
+	public void setFlagsAndOffset(short value) {
+		CommonMethods.writeShort(mData, mOffset + offset_flags_fo, value);
+	}
+
+	public byte getTTL() {
+		return mData[mOffset + offset_ttl];
+	}
+
+	public void setTTL(byte value) {
+		mData[mOffset + offset_ttl] = value;
+	}
+
+	public byte getProtocol() {
+		return mData[mOffset + offset_proto];
+	}
+
+	public void setProtocol(byte value) {
+		mData[mOffset + offset_proto] = value;
+	}
+
+	public short getCrc() {
+		return CommonMethods.readShort(mData, mOffset + offset_crc);
+	}
+
+	public void setCrc(short value) {
+		CommonMethods.writeShort(mData, mOffset + offset_crc, value);
+	}
+
+	public int getSourceIP() {
+		return CommonMethods.readInt(mData, mOffset + offset_src_ip);
+	}
+
+	public void setSourceIP(int value) {
+		CommonMethods.writeInt(mData, mOffset + offset_src_ip, value);
+	}
+
+	public int getDestinationIP() {
+		return CommonMethods.readInt(mData, mOffset + offset_dest_ip);
+	}
+
+	public void setDestinationIP(int value) {
+		CommonMethods.writeInt(mData, mOffset + offset_dest_ip, value);
+	}
+
+	@Override
+	public String toString() {
+		return String.format("%s->%s Pro=%s, HLen=%d", CommonMethods.ipIntToString(getSourceIP()),
+				CommonMethods.ipIntToString(getDestinationIP()), getProtocol(), getHeaderLength());
+	}
+}
