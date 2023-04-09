@@ -299,9 +299,15 @@ public class Packet implements Serializable {
 	}
 
 	/**
-	 * 通过packet包发送的第一个数据判断类型 如果是http协议 则首先发送的是http的请求头，请求头首先声明请求的类型 包括GET Head POST
+	 * The type of the first data sent through the packet is judged. If it is the
+	 * HTTP protocol,
+	 * the HTTP request header is sent first, and the request header first declares
+	 * the type of the request, including GET Head POST
 	 * PUT OPTION TRACE CONNECT
-	 * 如果是https协议，则完成socket连接之后开始ssl握手，ssl握手时客户端发给服务器的的第一个包的包内容中包括了访问的域名
+	 * If it is the https protocol,
+	 * the ssl handshake starts after the socket connection is completed.
+	 * During the ssl handshake, the content of the first packet sent by the client
+	 * to the server includes the visited domain name
 	 */
 	public void parseHttpRequestHeader() {
 		if (!isTCP) {
@@ -312,32 +318,32 @@ public class Packet implements Serializable {
 		byte firsByte = array[FIRST_TCP_DATA];
 		try {
 			switch (firsByte) {
-			// GET
-			case 'G':
-				// HEAD
-			case 'H':
-				// POST, PUT
-			case 'P':
-				// DELETE
-			case 'D':
-				// OPTIONS
-			case 'O':
-				// TRACE
-			case 'T':
-				// CONNECT
-			case 'C':
-				isHttp = true;
-				getHttpHostAndRequestUrl(array);
-				break;
-			// SSL
-			case 0x16:
-				getSNI(array);
-				break;
-			default:
-				cannotParse = true;
-				isSSL = false;
-				System.out.println(cannotParse +" can not parse " + (firsByte & 0xFF) + "   " + ((char) firsByte));
-				break;
+				// GET
+				case 'G':
+					// HEAD
+				case 'H':
+					// POST, PUT
+				case 'P':
+					// DELETE
+				case 'D':
+					// OPTIONS
+				case 'O':
+					// TRACE
+				case 'T':
+					// CONNECT
+				case 'C':
+					isHttp = true;
+					getHttpHostAndRequestUrl(array);
+					break;
+				// SSL
+				case 0x16:
+					getSNI(array);
+					break;
+				default:
+					cannotParse = true;
+					isSSL = false;
+					System.out.println(cannotParse + " can not parse " + (firsByte & 0xFF) + "   " + ((char) firsByte));
+					break;
 
 			}
 
@@ -474,7 +480,6 @@ public class Packet implements Serializable {
 		return urlPath;
 	}
 
-	
 	public static class IP4Header implements Serializable {
 
 		/**
@@ -609,20 +614,18 @@ public class Packet implements Serializable {
 		}
 	}
 
-	
 	public static class TCPHeader implements Serializable {
 		private static final long serialVersionUID = 5032613555561745874L;
-				public static final int FIN = 0x01;
-		
+		public static final int FIN = 0x01;
+
 		public static final int SYN = 0x02;
-		
 
 		public static final int RST = 0x04;
-		
+
 		public static final int PSH = 0x08;
-		
+
 		public static final int ACK = 0x10;
-		
+
 		public static final int URG = 0x20;
 
 		public int sourcePort;
