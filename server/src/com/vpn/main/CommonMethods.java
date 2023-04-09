@@ -60,7 +60,6 @@ public class CommonMethods {
         data[offset + 1] = (byte) (value);
     }
 
-    // 计算校验和
     public static short checksum(long sum, byte[] buf, int offset, int len) {
         sum += getsum(buf, offset, len);
         while ((sum >> 16) > 0) {
