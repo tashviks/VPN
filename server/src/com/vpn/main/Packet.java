@@ -8,7 +8,8 @@ import java.nio.ByteBuffer;
 import java.util.Locale;
 
 /**
- * Representation of an IP Packet
+ * Representation of an IP Packet :
+ * https://upload.wikimedia.org/wikipedia/commons/6/60/IPv4_Packet-en.svg
  */
 
 public class Packet implements Serializable {
