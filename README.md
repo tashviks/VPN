@@ -11,33 +11,36 @@ Config	Done
 EasyVpn	Done
 <br>
 IPHeader	Done
+<br>
 Packet	Done
-TCPClient	Done
-TCPHeader	Done
-TCPProxy	Done
-TCPServer	Done
-UDPHerader	Done
-UDPProxy	Done
-UDPServer	Done
+<br>
+TCPClient	Done<br>
+TCPHeader	Done<br>
+TCPProxy	Done<br>
+TCPServer	Done<br>
+UDPHerader	Done<br>
+UDPProxy	Done<br>
+UDPServer	Done<br>
 
-
+<br>
 Android
+<br>
 
-Android manifest		Incomplete
-Gradle Build		Incomplete
-Designing and UI 		Done
-Main Activity		Done
-KeyHandler			Incomplete
-Packet			Incomplete
-ProxyConfig			Incomplete
-VPNConstants		Incomplete
-VPNLog			Incomplete
-Tunneling 			Incomplete
-TCPIP Implementation	Done
-Proxy Server (TCP)	Done
-Remote UDP Tunnel		Done
-Socket programming 	Incomplete ( A few bugs )
-Service Helper		Incomplete
-TimeFormat			Incomplete
+Android manifest		Incomplete<br>
+Gradle Build		Incomplete<br>
+Designing and UI 		Done<br>
+Main Activity		Done<br>
+KeyHandler			Incomplete<br>
+Packet			Incomplete<br>
+ProxyConfig			Incomplete<br>
+VPNConstants		Incomplete<br>
+VPNLog			Incomplete<br>
+Tunneling 			Incomplete<br>
+TCPIP Implementation	Done<br>
+Proxy Server (TCP)	Done<br>
+Remote UDP Tunnel		Done<br>
+Socket programming 	Incomplete ( A few bugs )<br>
+Service Helper		Incomplete<br>
+TimeFormat			Incomplete<br>
 
 
