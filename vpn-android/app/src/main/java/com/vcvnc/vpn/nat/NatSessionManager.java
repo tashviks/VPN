@@ -10,16 +10,16 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * NAT管理对象
+ * NAT Management Object
  */
 public class NatSessionManager {
     /**
-     * 会话保存的最大个数
+     * The maximum number of sessions saved
      */
 
     static final int MAX_SESSION_COUNT = 64;
     /**
-     * 会话保存时间
+     * Session Save Time
      */
 
     private static final long SESSION_TIME_OUT_NS = 60 * 1000L;
