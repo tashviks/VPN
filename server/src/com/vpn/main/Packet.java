@@ -12,9 +12,7 @@ import java.util.Locale;
  */
 
 public class Packet implements Serializable {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 3182627703437600297L;
 	public static final int IP4_HEADER_SIZE = 20;
 	public static final int TCP_HEADER_SIZE = 20;
