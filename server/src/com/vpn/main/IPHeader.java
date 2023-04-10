@@ -44,7 +44,6 @@ public class IPHeader {
 	}
 
 	public void setHeaderLength(int value) {
-		// 4 << 4 表示版本为IPv4
 		mData[mOffset + offset_ver_ihl] = (byte) ((4 << 4) | (value / 4));
 	}
 
