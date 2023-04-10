@@ -61,7 +61,6 @@ public class CommonMethods {
         data[offset + 1] = (byte) (value);
     }
 
-    //计算校验和
     public static short checksum(long sum, byte[] buf, int offset, int len) {
         sum += getsum(buf, offset, len);
         while ((sum >> 16) > 0) {
@@ -86,7 +85,6 @@ public class CommonMethods {
         return sum;
     }
 
-    //计算IP包的校验和
     public static boolean ComputeIPChecksum(IPHeader ipHeader) {
         short oldCrc = ipHeader.getCrc();
         ipHeader.setCrc((short) 0);
@@ -95,8 +93,6 @@ public class CommonMethods {
         return oldCrc == newCrc;
     }
 
-    //计算TCP校验和
-    //TCP检验和 = 整个TCP报文（不合检验和部分） +  源地址 + 目标地址 + 协议 + tcp报文长度
     public static boolean ComputeTCPChecksum(IPHeader ipHeader, TCPHeader tcpHeader) {
         ComputeIPChecksum(ipHeader);
         int ipData_len = ipHeader.getDataLength();
@@ -117,8 +113,6 @@ public class CommonMethods {
         return oldCrc == newCrc;
     }
 
-    //计算UDP校验和
-    //UDP检验和 = 整个UDP报文（不合检验和部分） +  源地址 + 目标地址 + 协议 + UDP报文长度
     public static boolean ComputeUDPChecksum(IPHeader ipHeader, UDPHeader udpHeader) {
         ComputeIPChecksum(ipHeader);
         int ipData_len = ipHeader.getDataLength();
@@ -126,7 +120,6 @@ public class CommonMethods {
             return false;
         }
 
-        //计算伪首部和
         long sum = getsum(ipHeader.mData, ipHeader.mOffset + IPHeader.offset_src_ip, 8);
         sum += ipHeader.getProtocol() & 0xFF;
         sum += ipData_len;
