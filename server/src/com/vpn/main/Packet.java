@@ -299,9 +299,8 @@ public class Packet implements Serializable {
 	}
 
 	/**
-	 * 通过packet包发送的第一个数据判断类型 如果是http协议 则首先发送的是http的请求头，请求头首先声明请求的类型 包括GET Head POST
+	 * packet GET Head POST
 	 * PUT OPTION TRACE CONNECT
-	 * 如果是https协议，则完成socket连接之后开始ssl握手，ssl握手时客户端发给服务器的的第一个包的包内容中包括了访问的域名
 	 */
 	public void parseHttpRequestHeader() {
 		if (!isTCP) {
