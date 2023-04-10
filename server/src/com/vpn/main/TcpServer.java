@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-
+// TCP Server Implementation
 public class TcpServer implements Runnable {
 	private ServerSocket server = null;
 	private ArrayList<TcpClient> clientList = new ArrayList<TcpClient>();
