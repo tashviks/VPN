@@ -1,5 +1,5 @@
 package com.easyvpn.main;
-// Contributed by Tashvik and Pawan
+// Creating the IP Header in order to update the intiital data packet
 public class IPHeader {
 
 	public static final short IP = 0x0800;
