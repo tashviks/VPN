@@ -17,7 +17,7 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
-
+import java.util.*;
 
 public class TcpProxyServer implements Runnable {
     private static final String TAG = "TcpProxyServer";
@@ -150,11 +150,11 @@ public class TcpProxyServer implements Runnable {
             InetSocketAddress destAddress = getDestAddress(localChannel);
             if (destAddress != null) {
                 TcpTunnel remoteTunnel = TunnelFactory.createTunnelByConfig(ProxyConfig.getVpnAddress(), destAddress, mSelector, portKey);
-                //关联兄弟
+                
                 remoteTunnel.setBrotherTunnel(localTunnel);
                 localTunnel.setBrotherTunnel(remoteTunnel);
 
-                //开始连接
+                
                 remoteTunnel.connect(destAddress);
             }
         } catch (Exception ex) {
