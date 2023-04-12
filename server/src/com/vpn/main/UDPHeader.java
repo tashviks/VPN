@@ -1,6 +1,6 @@
 // tashvik and pawan
 package com.easyvpn.main;
-
+// creating the header file in order to implement the user datagram protocol
 public class UDPHeader {
   
     static final short offset_src_port = 0; 
@@ -53,3 +53,5 @@ public class UDPHeader {
         return String.format("%d->%d", getSourcePort() & 0xFFFF, getDestinationPort() & 0xFFFF);
     }
 }
+
+// codes are much similar to tcpip and easily understandable. Refer to tcpHeader for enhanced comments
