@@ -41,9 +41,7 @@ public class TcpProxyServer implements Runnable {
                 .toString(), this.port & 0xFFFF);
     }
 
-    /**
-     * 启动TcpProxyServer线程
-     */
+    
     public void start() {
         mServerThread = new Thread(this, "TcpProxyServerThread");
         mServerThread.start();
